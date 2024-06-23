@@ -1,0 +1,17 @@
+{
+  "name": "bmi",
+  "version": "1.0.0",
+  "description": "part of FSO chapter 9 exercise 9.1 to 9.7",
+  "main": "index.js",
+  "scripts": {
+    "ts-node": "ts-node",
+    "bmiCalculator": "npm run ts-node  bmiCalculator.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.2"
+  }
+}
