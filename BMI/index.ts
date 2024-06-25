@@ -1,6 +1,9 @@
 import express from "express";
+import exerciseCalculator from "./exerciseCalculator";
 const app = express();
 const PORT = 3000;
+
+app.use(express.json());
 
 app.get('/', ( _ , res)=>{
     return res.send("hello");
@@ -37,7 +40,20 @@ app.get("/bmi", (req, res) => {
 });
 
 app.post('/exercise', (request, response) =>{
+    try{
+    console.log("request body:",request.body);
+    const {daily_exercises, target} = request.body;
     
+    if(!daily_exercises || !target){
+      return response.status(400).send("not enough argumnets: daily_arguments and target");
+    }
+      const parsedArgs = exerciseCalculator.parseArguments({...daily_exercises, ...target});
+      const result = exerciseCalculator.exerciseCalculator(parsedArgs);
+      return response.status(200).send(result);
+    }catch(error){
+      return response.status(400).json({error:"error occured"+error.message});
+    }
+
 })
 
 
