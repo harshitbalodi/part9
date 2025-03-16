@@ -6,8 +6,11 @@
   "main": "index.js",
   "scripts": {
     "ts-node": "ts-node",
-    "bmiCalculator": "npm run ts-node  bmiCalculator.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "calculateBmi": "ts-node bmiCalculator.ts",
+    "calculateExercises": "ts-node exerciseCalculator.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx tsx index.ts",
+	"lint":"eslint ."
   },
   "author": "",
   "license": "ISC",
@@ -18,10 +21,10 @@
     "eslint": "^8.57.0",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
+    "tsx": "^4.19.3",
     "typescript": "^5.5.2"
   },
   "dependencies": {
-    "express": "^4.19.2",
-    "tsx": "^4.16.0"
+    "express": "^4.19.2"
   }
 }

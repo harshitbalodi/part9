@@ -1,4 +1,4 @@
-interface heightAndWeight {
+export interface heightAndWeight {
   height: number;
   weight: number;
 }
@@ -13,8 +13,8 @@ const parser = (args: string[]): heightAndWeight => {
 
   let height: number, weight: number;
   if (!isNaN(Number(args[2])) && !isNaN(Number(args[3]))) {
-    weight = Number(args[2]);
-    height = Number(args[3]);
+    height = Number(args[2]);
+    weight = Number(args[3]);
   } else {
     throw new Error("arguments are not numbers");
   }
@@ -26,16 +26,19 @@ const parser = (args: string[]): heightAndWeight => {
   };
 };
 
-const CalculateBmi = ({ height, weight }: heightAndWeight): string => {
+export const CalculateBmi = ({ height, weight }: heightAndWeight): string => {
   if (height <= 0 || weight <= 0) {
     throw new Error("Height and weight must be positive");
   }
   const heightInMeters = height / 100;
+  console.log(heightInMeters);
   const bmi = weight / (heightInMeters * heightInMeters);
+  console.log(bmi);
+
   if (bmi < 18.5) {
     return "underweight";
   } else if (bmi >= 18.5 && bmi < 25) {
-    return "normal";
+    return "Normal range";
   } else if (bmi >= 25 && bmi < 30) {
     return "overweight";
   } else {
@@ -43,12 +46,13 @@ const CalculateBmi = ({ height, weight }: heightAndWeight): string => {
   }
 };
 
-try {
-  const parsedArgs = parser(process.argv);
-  const result = CalculateBmi(parsedArgs);
-  console.log(result);
-} catch (error: unknown) {
-  if (error instanceof Error) {
-    throw new Error("error occured:" + error.message);
-  }
-}
+// try {
+//   const parsedArgs = parser(process.argv);
+//   const result = CalculateBmi(parsedArgs);
+//   console.log(result);
+// } catch (error: unknown) {
+//   if (error instanceof Error) {
+//     throw new Error("error occured:" + error.message);
+//   }
+// }
+
